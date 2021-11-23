@@ -47,3 +47,11 @@ def some_func():
 - pydantic
 
 ### jsonschema
+TO DO
+
+## Middleware
+```python
+@app.before_request
+def some_middleware():
+    print(request.headers)
+```
