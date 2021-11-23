@@ -4,12 +4,12 @@
 ```python
 @app.route('/api/v1', methods=['GET'])
 def some_func():
-    return None
+    pass
 ```
 ### Через метод  
 ```python
 def some_func():
-    return None
+    pass
     
 app.add_url_rule('/api/v1', view_func=some_func, methods=['GET'])
 ```
@@ -22,7 +22,7 @@ from flask import request, jsonify
 
 def some_func():
     if request.headers.get('token') == 'something':
-        return jsonify({'response': 'ok'})
+        return jsonify({'response': 'correct token'})
 ```
 
 ### Данные
