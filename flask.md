@@ -38,3 +38,12 @@ def some_func():
 
     return jsonify({'response': 'wrong user'})
 ```
+
+## Валидация данных
+
+### Популярные библиотеки
+- jsonschema
+- marshmallow
+- pydantic
+
+### jsonschema
