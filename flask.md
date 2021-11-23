@@ -2,14 +2,14 @@
 
 ### Через декоратор
 ```python
-@app.route('/api/v1', methods=['GET'])
+@app.route('/', methods=['GET'])
 def some_func():
-    pass
+    return 'Hello World!'
 ```
 ### Через метод  
 ```python
 def some_func():
-    pass
+    return 'Hello World!'
     
 app.add_url_rule('/api/v1', view_func=some_func, methods=['GET'])
 ```
