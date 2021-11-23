@@ -14,7 +14,7 @@ def some_func():
 app.add_url_rule('/api/v1', view_func=some_func, methods=['GET'])
 ```
 
-## Доступ к данным и заголовкам
+## Доступ к заголовкам и данным в запросе
 
 ### Заголовки
 ```python
