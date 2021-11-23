@@ -18,7 +18,7 @@ app.add_url_rule('/api/v1', view_func=some_func, methods=['GET'])
 
 ### Заголовки
 ```python
-from flask import request
+from flask import request, jsonify
 
 def some_func():
     if request.headers.get('token') == 'something':
@@ -26,3 +26,15 @@ def some_func():
 ```
 
 ### Данные
+```python
+from flask import request, jsonify
+
+def some_func():
+    r = request.json
+    user = r.get('user')
+
+    if user == 'some_user':
+        return jsonify({'response': 'correct user'})
+
+    return jsonify({'response': 'wrong user'})
+```
