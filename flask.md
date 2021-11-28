@@ -205,7 +205,8 @@ db.create_all()
 ![image](https://user-images.githubusercontent.com/48824617/143738507-7c8ed3fa-8a7b-4f84-9f5c-de773b421422.png)
 
 Параметр **required=True** в title = fields.String(required=True) используется для возвращения кода 422, если в теле POST запроса не будет указано поле с этим параметров. Выглядит это так:
-![image](https://user-images.githubusercontent.com/48824617/143738266-e8e375d5-6e98-4799-8312-5d8290a4261a.png)
+
+![image](https://user-images.githubusercontent.com/48824617/143740451-c69732e8-ca64-40d0-8d70-99b81541207e.png)
 
 Параметр **many=True** в AdvertisementSchema(many=True) позволяет использовать эту схему для работы со множеством объектов (т.е. для запросов вида GET /advertisements, а не GET /advertisements/1, например).
 
@@ -224,4 +225,5 @@ app.config.update(
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 ```
+
 Создание инстанса marshmallow должно происходить после создания инстанса sqlalchemy.
