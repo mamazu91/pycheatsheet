@@ -1,8 +1,8 @@
 ### Оглавление
-1. [run.py](https://github.com/mamazu91/pycheatsheet/blob/main/flask.md#runpy-)
-2. [views.py](https://github.com/mamazu91/pycheatsheet/blob/main/flask.md#viewspy-)
-3. [models.py](https://github.com/mamazu91/pycheatsheet/blob/main/flask.md#modelspy-)
-4. [app.py](https://github.com/mamazu91/pycheatsheet/blob/main/flask.md#apppy-)
+1. [run.py](#https://github.com/mamazu91/pycheatsheet/blob/main/flask.md#runpy-)
+2. [views.py](#https://github.com/mamazu91/pycheatsheet/blob/main/flask.md#viewspy-)
+3. [models.py](#https://github.com/mamazu91/pycheatsheet/blob/main/flask.md#modelspy-)
+4. [app.py](#https://github.com/mamazu91/pycheatsheet/blob/main/flask.md#apppy-)
 
 ### run.py
 ```python
