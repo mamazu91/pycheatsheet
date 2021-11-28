@@ -3,7 +3,7 @@
 3. [views.py](#3)
 
 
-# run.py
+# run.py <a name="1"></a>
 ```python
 import views
 from app import app
@@ -13,7 +13,7 @@ if __name__ == '__main__':
 ```
 Импортирование views обеспечивает доступность и регистрацию маршрутов. Без этого импорта маршрутов не будет. Причем при запуске приложения через команду flask run маршрутов (по какой-то причине) тоже не будет.
 
-# app.py
+# app.py <a name="2"></a>
 ```python
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
@@ -30,7 +30,7 @@ ma = Marshmallow(app)
 ```
 Создание инстанса marshmallow должно происходить после создания инстанса sqlalchemy.
 
-# views.py
+# views.py <a name="3"></a>
 ```python
 from flask.views import MethodView
 from models import Advertisements, advertisement_schema, all_advertisements_schema, Publishers
