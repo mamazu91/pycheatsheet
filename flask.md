@@ -1,10 +1,10 @@
 ### Оглавление
-1. [run.py](#run.py)
-2. [app.py](#2)
-3. [views.py](#3)
-4. [models.py] (#https://github.com/mamazu91/pycheatsheet/blob/main/flask.md#modelspy-)
+1. [run.py](https://github.com/mamazu91/pycheatsheet/blob/main/flask.md#runpy-)
+2. [views.py](https://github.com/mamazu91/pycheatsheet/blob/main/flask.md#viewspy-)
+3. [models.py](https://github.com/mamazu91/pycheatsheet/blob/main/flask.md#modelspy-)
+4. [app.py](https://github.com/mamazu91/pycheatsheet/blob/main/flask.md#apppy-)
 
-### run.py <a name="1"></a>
+### run.py
 ```python
 import views
 from app import app
@@ -14,7 +14,7 @@ if __name__ == '__main__':
 ```
 Импортирование views обеспечивает доступность и регистрацию маршрутов. Без этого импорта маршрутов не будет. Причем при запуске приложения через команду flask run маршрутов (по какой-то причине) тоже не будет.
 
-### views.py <a name="3"></a>
+### views.py
 ```python
 from flask.views import MethodView
 from models import Advertisements, advertisement_schema, all_advertisements_schema, Publishers
@@ -134,7 +134,7 @@ app.add_url_rule('/advertisements/<int:advertisement_id>', view_func=Advertiseme
 
 При наличии аутентификации указанного пользователя можно забрать из **request.authorization.username**.
 
-### models.py <a name="4"></a>
+### models.py
 ```python
 from app import db, ma
 from datetime import datetime
@@ -211,7 +211,7 @@ db.create_all()
 
 Параметр **many=True** в AdvertisementSchema(many=True) позволяет использовать эту схему для работы со множеством объектов (т.е. для запросов вида GET /advertisements, а не GET /advertisements/1, например).
 
-### app.py <a name="2"></a>
+### app.py
 ```python
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
