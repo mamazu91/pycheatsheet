@@ -2,7 +2,7 @@
 1. [run.py](#run.py)
 2. [app.py](#2)
 3. [views.py](#3)
-4. [models.py] (https://github.com/mamazu91/pycheatsheet/blob/main/flask.md#modelspy-)
+4. [models.py] (#https://github.com/mamazu91/pycheatsheet/blob/main/flask.md#modelspy-)
 
 ### run.py <a name="1"></a>
 ```python
