@@ -1,57 +1,26 @@
-## Добавление маршрута
-
-### Через декоратор
+### run.py
 ```python
-@app.route('/', methods=['GET'])
-def some_func():
-    return 'Hello World!'
+import views
+from app import app
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0')
 ```
-### Через метод  
+Импортирование views обеспечивает доступность и регистрацию маршрутов. Без этого импорта маршрутов не будет. Причем при запуске приложения через команду flask run маршрутов (по какой-то причине) тоже не будет.
+
+### app.py
 ```python
-def some_func():
-    return 'Hello World!'
-    
-app.add_url_rule('/api/v1', view_func=some_func, methods=['GET'])
-```
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_marshmallow import Marshmallow
 
-## Доступ к заголовкам и данным в запросе
+app = Flask(__name__)
+app.config.update(
+    SQLALCHEMY_DATABASE_URI='postgresql://postgres:postgres@db:5432/netology_flask',
+    JSON_SORT_KEYS=False
+)
 
-### Заголовки
-```python
-from flask import request, jsonify
-
-def some_func():
-    if request.headers.get('token') == 'something':
-        return jsonify({'response': 'correct token'})
-```
-
-### Данные
-```python
-from flask import request, jsonify
-
-def some_func():
-    r = request.json
-    user = r.get('user')
-
-    if user == 'some_user':
-        return jsonify({'response': 'correct user'})
-
-    return jsonify({'response': 'wrong user'})
+db = SQLAlchemy(app)
+ma = Marshmallow(app)
 ```
 
-## Валидация данных
-
-### Популярные библиотеки
-- jsonschema
-- marshmallow
-- pydantic
-
-### jsonschema
-TO DO
-
-## Middleware
-```python
-@app.before_request
-def some_middleware():
-    print(request.headers)
-```
