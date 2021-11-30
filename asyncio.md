@@ -78,4 +78,4 @@ Got hero #1
 5. https://docs.python.org/dev/library/asyncio-task.html#future (документация по футурам)
 
 ### Разное <a name="links"></a>
-[Event loops use cooperative scheduling: an event loop runs one Task at a time. While a Task awaits for the completion of a Future, the event loop runs other Tasks, callbacks, or performs IO operations.](https://docs.python.org/dev/library/asyncio-task.html#task-object)
+1. [Event loops use cooperative scheduling: an event loop runs one Task at a time. While a Task awaits for the completion of a Future, the event loop runs other Tasks, callbacks, or performs IO operations.](https://docs.python.org/dev/library/asyncio-task.html#task-object)
