@@ -31,7 +31,43 @@ async def main():
 
 
 asyncio.run(main())
+```
+Порядок выполнения кода:
+1. Добавить таски в event loop:
+```python
+await asyncio.gather(*tasks)
+```
+2. Пройтись по коду ниже указанное кол-во раз (10):
+```python
+async def fetch_heroes(id):
+    session = aiohttp.ClientSession()
+    print(f'Getting hero with id {id}')
+    response = await session.get(f'{URL}{id}')
+```
+Т.е. каждый раз, когда интерпретатор доходит до await session.get(f'{URL}{id}'), он будет возвращаться на session = aiohttp.ClientSession().
 
+Аутпут:
+```python
+Getting hero #1
+Getting hero #2
+Getting hero #3
+Getting hero #4
+Getting hero #5
+Getting hero #6
+Getting hero #7
+Getting hero #8
+Getting hero #9
+Getting hero #10
+Got hero #8
+Got hero #10
+Got hero #5
+Got hero #9
+Got hero #3
+Got hero #6
+Got hero #2
+Got hero #4
+Got hero #7
+Got hero #1
 ```
 
 ### Полезные ссылки <a name="links"></a>
