@@ -74,5 +74,5 @@ Got hero #1
 1. https://habr.com/ru/post/337420/ (про asyncio в целом, с примерами)
 2. http://sdiehl.github.io/gevent-tutorial/ (то же, что и #1, но на английском и про gevent)
 3. https://docs.python.org/dev/library/asyncio-eventloop.html (документация по event loop)
-4. https://docs.python.org/3.5/library/asyncio-task.html#coroutines (документация по таскам)
-5. https://docs.python.org/3.5/library/asyncio-task.html#future (документация по футурам)
+4. https://docs.python.org/dev/library/asyncio-task.html#coroutines (документация по таскам)
+5. https://docs.python.org/dev/library/asyncio-task.html#future (документация по футурам)
