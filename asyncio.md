@@ -1,6 +1,7 @@
 ### Оглавление
 1. [Базовый пример](#example)
 2. [Полезные ссылки](#links)
+3. [Разное](#misc)
 
 ### Базовый пример <a name="example"></a>
 ```python
@@ -75,3 +76,7 @@ Got hero #1
 3. https://docs.python.org/dev/library/asyncio-eventloop.html (документация по event loop)
 4. https://docs.python.org/dev/library/asyncio-task.html#coroutines (документация по таскам)
 5. https://docs.python.org/dev/library/asyncio-task.html#future (документация по футурам)
+
+### Разное <a name="links"></a>
+"Event loops use cooperative scheduling: an event loop runs one Task at a time. While a Task awaits for the completion of a Future, the event loop runs other Tasks, callbacks, or performs IO operations."
+(https://docs.python.org/dev/library/asyncio-task.html#task-object)
