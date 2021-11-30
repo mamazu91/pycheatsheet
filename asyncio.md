@@ -4,6 +4,7 @@
 3. [Разное](#misc)
 
 ### Базовый пример <a name="example"></a>
+```python
 import aiohttp
 import asyncio
 
