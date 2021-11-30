@@ -4,7 +4,6 @@
 3. [Разное](#misc)
 
 ### Базовый пример <a name="example"></a>
-```python
 import aiohttp
 import asyncio
 
@@ -13,20 +12,18 @@ MAX_HEROES = 11
 
 
 async def get_heroes(hero_id):
-    session = aiohttp.ClientSession()
-    print(f'Getting hero with id {hero_id}')
-    response = await session.get(f'{URL}{hero_id}')
-    print(f'Got hero {hero_id}')
-    await session.close()
+    async with aiohttp.ClientSession() as session:
+        response = await session.get(f'{URL}{hero_id}')
+        print(f'Got hero {hero_id}')
 
-    return response
+    return hero_id
 
 
 async def main():
     coroutines = [get_heroes(i) for i in range(1, MAX_HEROES)]
 
-    await asyncio.gather(*coroutines)
-
+    heroes_ids = await asyncio.gather(*coroutines)
+    print(heroes_ids)
 
 asyncio.run(main())
 ```
@@ -40,34 +37,46 @@ await asyncio.gather(*coroutines)
 2. Пройтись по коду ниже указанное кол-во раз (10):
 ```python
 async def get_heroes(hero_id):
-    session = aiohttp.ClientSession()
-    print(f'Getting hero with id {hero_id}')
-    response = await session.get(f'{URL}{hero_id}')
+    async with aiohttp.ClientSession() as session:
+        response = await session.get(f'{URL}{hero_id}')
 ```
-Т.е. каждый раз, когда интерпретатор доходит до await session.get(f'{URL}{id}'), он будет возвращаться на session = aiohttp.ClientSession().
+Т.е. каждый раз, когда интерпретатор доходит до **await**, он будет возвращаться к **async with aiohttp.ClientSession() as session**.
 
 Аутпут:
 ```python
-Getting hero #1
-Getting hero #2
-Getting hero #3
-Getting hero #4
-Getting hero #5
-Getting hero #6
-Getting hero #7
-Getting hero #8
-Getting hero #9
-Getting hero #10
-Got hero #8
-Got hero #10
-Got hero #5
-Got hero #9
-Got hero #3
-Got hero #6
-Got hero #2
-Got hero #4
-Got hero #7
-Got hero #1
+Got hero 4
+Got hero 8
+Got hero 1
+Got hero 2
+Got hero 10
+Got hero 6
+Got hero 5
+Got hero 7
+Got hero 3
+Got hero 9
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+```
+
+Я добавил **print(heroes_ids)**, чтобы показать, как меняется код, если вместо asyncio.gather() использовать **asyncio.as_completed()**. asyncio.gather() возвращает итератор с результатами всех корутин, поэтому ему необходимо дождаться их окончания, чтобы он смог это сделать.
+
+Если переписать функцию main() под asyncio.as_completed() таким образом:
+```python
+async def main():
+    coroutines = [get_heroes(i) for i in range(1, MAX_HEROES)]
+
+    for coroutine in asyncio.as_completed(coroutines):
+        hero_id = await coroutine
+        print(hero_id)
+```
+
+То поскольку метод as_completed() возвращает итератор с корутинами, то это позволит работать с результатами каждой конкретной корутины по мере их поступления (т.е., например, это позволит обрабатывать результаты корутины, вернувшей результаты быстрее остальных). Аутпут в данном случае выглядит так:
+```python
+async def main():
+    coroutines = [get_heroes(i) for i in range(1, MAX_HEROES)]
+
+    for coroutine in asyncio.as_completed(coroutines):
+        hero_id = await coroutine
+        print(hero_id)
 ```
 
 ### Полезные ссылки <a name="links"></a>
