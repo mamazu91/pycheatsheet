@@ -32,7 +32,7 @@ asyncio.run(main())
 ```
 
 Порядок выполнения кода:
-1. Добавить s в event loop:
+1. Добавить корутины в event loop:
 ```python
 await asyncio.gather(*coroutines)
 ```
