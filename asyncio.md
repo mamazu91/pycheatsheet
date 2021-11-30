@@ -11,38 +11,37 @@ URL = 'https://swapi.dev/api/people/'
 MAX_HEROES = 11
 
 
-async def fetch_heroes(id):
+async def get_heroes(hero_id):
     session = aiohttp.ClientSession()
-    print(f'Getting hero with id {id}')
-    response = await session.get(f'{URL}{id}')
-    print(f'Got hero {id}')
+    print(f'Getting hero with id {hero_id}')
+    response = await session.get(f'{URL}{hero_id}')
+    print(f'Got hero {hero_id}')
     await session.close()
 
     return response
 
 
 async def main():
-    tasks = []
-    for i in range(1, MAX_HEROES):
-        task = asyncio.create_task(fetch_heroes(i))
-        tasks.append(task)
+    coroutines = [get_heroes(i) for i in range(1, MAX_HEROES)]
 
-    await asyncio.gather(*tasks)
+    await asyncio.gather(*coroutines)
 
 
 asyncio.run(main())
 ```
+
 Порядок выполнения кода:
-1. Добавить таски в event loop:
+1. Добавить s в event loop:
 ```python
-await asyncio.gather(*tasks)
+await asyncio.gather(*coroutines)
 ```
+
 2. Пройтись по коду ниже указанное кол-во раз (10):
 ```python
-async def fetch_heroes(id):
+async def get_heroes(hero_id):
     session = aiohttp.ClientSession()
-    print(f'Getting hero with id {id}')
-    response = await session.get(f'{URL}{id}')
+    print(f'Getting hero with id {hero_id}')
+    response = await session.get(f'{URL}{hero_id}')
 ```
 Т.е. каждый раз, когда интерпретатор доходит до await session.get(f'{URL}{id}'), он будет возвращаться на session = aiohttp.ClientSession().
 
