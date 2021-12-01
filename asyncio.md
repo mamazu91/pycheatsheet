@@ -14,7 +14,7 @@ MAX_HEROES = 11
 
 async def get_heroes(hero_id):
     async with aiohttp.ClientSession() as session:
-        response = await session.get(f'{URL}{hero_id}')
+        await session.get(f'{URL}{hero_id}')
         print(f'Got hero {hero_id}')
 
     return hero_id
@@ -72,12 +72,16 @@ async def main():
 
 То поскольку метод as_completed() возвращает итератор с корутинами, это позволит работать с результатами каждой конкретной корутины по мере их поступления (т.е., например, это позволит обрабатывать результаты корутины, вернувшей результаты быстрее остальных). Аутпут в данном случае выглядит так:
 ```python
-async def main():
-    coroutines = [get_heroes(i) for i in range(1, MAX_HEROES)]
-
-    for coroutine in asyncio.as_completed(coroutines):
-        hero_id = await coroutine
-        print(hero_id)
+Got hero 8
+Got hero 7
+Got hero 2
+Got hero 3
+Got hero 6
+Got hero 10
+Got hero 1
+Got hero 4
+Got hero 9
+Got hero 5
 ```
 
 ### Полезные ссылки <a name="links"></a>
