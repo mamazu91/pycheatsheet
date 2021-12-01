@@ -94,6 +94,12 @@ Got hero 5
 
 ### Разное <a name="misc"></a>
 1. [Event loops use cooperative scheduling: an event loop runs one Task at a time. While a Task awaits for the completion of a Future, the event loop runs other Tasks, callbacks, or performs IO operations.](https://docs.python.org/dev/library/asyncio-task.html#task-object)
+2. In Python, threads do not speed up CPU-bound tasks because of an implementation detail in the standard Python system called the Global Interpreter Lock (GIL). This exists to avoid threading problems in the Python interpreter, and can actually make amultithreaded program slower than its single-threaded counterpart, or even a multi process version.
+
+So for Python, the recommendations are as follows:
+* Use threads for I/O-bound problems
+* Use processes, networking, or events (discussed in the next section) for CPU bound problems
+(из книги Introducing Python)
 
 ### Asyncio против других concurrency методов <a name="asyncvs"></a>
 1. **Процессы:** поскольку 1 процесс = 1 CPU, несколько процессов это хороший способ использовать больше CPU, однако ими сложнее управлять;
